@@ -22,23 +22,18 @@ assign OR_out = A | B;
 assign NOT_A = ~A;
 
 endmodule
-
- Testbench
+// Testbench
 module testbench;
     reg A, B;
     wire AND_out, OR_out, NOT_A;
-
     basic_gates uut (.A(A), .B(B), .AND_out(AND_out), .OR_out(OR_out), .NOT_A(NOT_A));
-
     initial begin
         $monitor("A=%b B=%b | AND=%b OR=%b NOT_A=%b", A, B, AND_out, OR_out, NOT_A);
-        
-        // Test cases
+         // Test cases
         A = 0; B = 0; #10;
         A = 0; B = 1; #10;
         A = 1; B = 0; #10;
         A = 1; B = 1; #10;
-
         $finish;
     end
 endmodule
